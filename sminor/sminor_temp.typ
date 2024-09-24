@@ -59,10 +59,16 @@
   // show math.equation: set text(font: math_font)
 
   // 数式のナンバリング
-  set math.equation(numbering: "(1)")
+  set math.equation(numbering: "(1)",number-align: bottom)
 
   doc
 }
+
+#let appendix(app)=[
+  #counter(heading).update(0)
+  #set heading(numbering: "A.1.   ")
+  #app
+]
 
 #let introbox(title: none, body)={
   align(right)[
@@ -78,7 +84,7 @@
 
 #let quizbox(title: none, body)={
   rect(width: 100%, stroke:(rest: 1pt),radius: 5pt)[
-    #text(font: "Noto Serif CJK JP", size: 14pt, )[#emph(title)]\
+    #text(font: "Noto Sans CJK JP", size: 14pt, )[#emph(title)]\
     
     #body
   ]
@@ -86,3 +92,6 @@
 
 #let colMath(x, color)= text(fill: color)[$#x$]
 
+#let voidbox(width:4em, text:none)={
+  box(width:width, height: 1.2em, baseline: 0.2em,stroke:(rest: 1pt), inset: 0.2em)[#align(center)[#text]]
+}
