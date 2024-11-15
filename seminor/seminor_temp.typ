@@ -20,6 +20,7 @@
   set page(paper:"a4",
            header:align(right,text(font: serif, size: fontsize, header_text)))
   set page(numbering: "(1)")
+  set text(features: ("ss01",))
   align(center,text(font: sans, size: 1.5*fontsize, strong(title)))
   align(center)[
     #box()[
