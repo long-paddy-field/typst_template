@@ -2,13 +2,12 @@
 #import "@preview/unify:0.5.0":*
 #import "@preview/metro:0.2.0":*
 
-#let seminor_article(
+#let report_article(
   fontsize: 11pt,
   title: none,
   subtitle: none,
   header_text: none,
   authors: (),
-  abstruct: [],
   date: none,
   doc,
 )={
@@ -28,14 +27,6 @@
     ]
   ]
 
-  if abstruct !=[]{
-    par(align(left,text(font: sans)[
-      *概要*\
-      #block(width: 99%)[#align(left,abstruct)]
-
-    ]))
-  }
-  
   // set font
   set text(lang: "ja", font: serif, fontsize)
   
@@ -47,7 +38,6 @@
   )
   show par: set block(spacing: 1.2em)
   show heading: set block(above: 1.6em, below: 0.6em)
-  set heading(numbering: "1.1.     ")
   
   // 見出しの下の段落を字下げするため
   show heading: it =>{
