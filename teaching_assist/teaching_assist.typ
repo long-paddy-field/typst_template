@@ -1,5 +1,4 @@
 #import "@preview/physica:0.9.3":*
-#import "@preview/unify:0.5.0":*
 
 #let seminor_article(
   fontsize: 11pt,
@@ -11,8 +10,8 @@
   date: none,
   doc,
 )={
-  let serif = "Yu Mincho"
-  let sans = "Yu Gothic"
+  let serif = "Noto Serif CJK JP"
+  let sans = "Noto Sans CJK JP"
   // let math_font = "Noto Sans Math"
 
   // ヘッダーの設定
@@ -32,6 +31,7 @@
     par(align(left,text(font: sans)[
       *概要*\
       #block(width: 99%)[#align(left,abstruct)]
+
     ]))
   }
   
@@ -59,7 +59,7 @@
   // show math.equation: set text(font: math_font)
 
   // 数式のナンバリング
-  set math.equation(numbering: "(1)",number-align: bottom)
+  // set math.equation(numbering: "(1)",number-align: bottom)
 
   doc
 }
@@ -74,8 +74,10 @@
   align(right)[
     #rect(width: 98%, stroke: (left: 1pt))[
       #align(left)[
-        #text(font: "Noto Sans CJK JP", size: 12pt)[#sym.star.stroked#emph(title)]\
-        
+        #if title != []{
+          text(font: "Noto Sans CJK JP", size: 12pt)[#sym.star.stroked#emph(title)]
+          parbreak()
+        }
         #body
       ]
     ]
@@ -84,8 +86,10 @@
 
 #let quizbox(title: none, body)={
   rect(width: 100%, stroke:(rest: 1pt),radius: 5pt)[
-    #text(font: "Noto Sans CJK JP", size: 14pt, )[#emph(title)]\
-    
+  #if title != []{
+    text(font: "Noto Sans CJK JP", size: 14pt, )[#emph(title)]
+    // parbreak()
+  }
     #body
   ]
 }
@@ -94,4 +98,16 @@
 
 #let voidbox(width:4em, text:none)={
   box(width:width, height: 1.2em, baseline: 0.2em,stroke:(rest: 1pt), inset: 0.2em)[#align(center)[#text]]
+}
+
+#let math_quiz(body)={
+  set math.equation(numbering: none)
+  show math.equation: set align(left)
+  align(right)[
+    #box(width: 95%)[
+      #align(left)[
+      #body
+      ]
+    ]
+  ]
 }

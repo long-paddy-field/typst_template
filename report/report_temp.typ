@@ -1,13 +1,13 @@
-#import "@preview/physica:0.9.3":*
-#import "@preview/unify:0.5.0":*
-#import "@preview/metro:0.2.0":*
+#import "@preview/physica:0.9.6":*
+#import "@preview/unify:0.7.1":*
+// #import "@preview/metro:0.2.0":*
 
 #let report_article(
   fontsize: 11pt,
   title: none,
   subtitle: none,
   header_text: none,
-  authors: (),
+  authors: none,
   date: none,
   doc,
 )={
@@ -26,7 +26,7 @@
       #align(left,text(font: sans, size: 1.2*fontsize,subtitle))
     ]
   ]
-
+  align(right,text(font: sans, authors))
   // set font
   set text(lang: "ja", font: serif, fontsize)
   
